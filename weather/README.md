@@ -4,12 +4,14 @@
 
 이 프로그램은 기상청에서 제공하는 단기예보 오픈 API를 활용하여 날씨 정보를 가져오는 파이썬 프로그램입니다.
 
-## 필요한 라이브러리 설치
+## 라이브러리 설치
 
-프로그램을 실행하기 전에 필요한 라이브러리를 설치해주세요:
+> 프로그램 실행을 위해 [uv](https://github.com/astral-sh/uv#installation)가 필요합니다. uv를 설치해주세요.
+
+프로그램을 실행하기 전에 필요한 라이브러리를 설치해주세요
 
 ```bash
-pip install requests python-dotenv
+uv add requests python-dotenv
 ```
 
 ## 사용 방법
@@ -39,6 +41,23 @@ WEATHER_API_KEY=여기에_발급받은_DECODING_API키_입력
     "weather": {
       "command": "uv 전체 경로",
       "args": ["--directory", "server.py 폴더 절대 경로", "run", "server.py"]
+    }
+  }
+}
+```
+
+```json
+// 예시
+{
+  "mcpServers": {
+    "weather": {
+      "command": "C:/Users/사용자/.local/bin/uv",
+      "args": [
+        "--directory",
+        "C:/Users/사용자/Desktop/mcp/weather/src/mcp_server_weather",
+        "run",
+        "server.py"
+      ]
     }
   }
 }
