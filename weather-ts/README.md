@@ -41,38 +41,25 @@
      - `location` (문자열): 조회할 지역명 (예: 서울, 부산, 대구 등)
    - 반환값: 해당 지역의 현재 날씨 상태, 기온, 습도 등의 정보
 
+## 빌드 방법
+
+Docker 빌드
+
+```bash
+docker build -t mcp/weather-ts -f Dockerfile .
+```
+
 ## 설정 방법
 
-1. 날씨 API 키 발급:
+1. 날씨 API 키 발급
 
-   - [기상청 날씨 오픈 API](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084) 페이지를 방문합니다
-   - 회원가입 후 API 키를 신청합니다
-   - 발급받은 서비스 키를 안전하게 보관합니다
-
-2. API 사용 권한 설정:
-
-   - 발급받은 API 키의 활성화 상태를 확인합니다
-   - 필요한 경우 사용량 및 호출 제한을 확인합니다
+   - [기상청 날씨 오픈 API](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15084084) 페이지를 방문합니다.
+   - 회원가입 후 API 키를 신청합니다.
+   - 발급받은 서비스 키를 안전하게 보관합니다.
 
 ### Claude Desktop에서 사용 방법
 
 `claude_desktop_config.json` 파일에 다음 내용을 추가하세요:
-
-#### npx 사용
-
-```json
-{
-  "mcpServers": {
-    "weather": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-weather-ts"],
-      "env": {
-        "WEATHER_API_KEY": "발급받은_API_키"
-      }
-    }
-  }
-}
-```
 
 #### docker 사용
 
@@ -91,16 +78,12 @@
         "mcp/weather-ts"
       ],
       "env": {
-        "WEATHER_API_KEY": "발급받은_API_키"
+        "WEATHER_API_KEY": "발급받은_DECODING_API_키"
       }
     }
   }
 }
 ```
-
-### 환경 변수
-
-1. `WEATHER_API_KEY`: 필수. 기상청 오픈 API에서 발급받은 서비스 키(Decoding 키)
 
 ### 문제 해결
 
@@ -110,20 +93,6 @@ API 호출 중 오류가 발생할 경우 다음을 확인하세요:
 2. 네트워크 연결 상태 확인
 3. 일일 API 호출 한도 초과 여부 확인
 4. 지원되는 지역 이름인지 확인 (`list-locations` 도구 사용)
-
-## 빌드 방법
-
-Docker 빌드:
-
-```bash
-docker build -t mcp/weather-ts -f Dockerfile .
-```
-
-TypeScript 빌드:
-
-```bash
-npm run build
-```
 
 ## 라이선스
 
