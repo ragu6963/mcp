@@ -1,31 +1,20 @@
-# 빌드 단계를 위한 베이스 이미지
 FROM node:22-alpine AS builder
 
-# 작업 디렉토리 설정
 WORKDIR /app
 
-# package.json 및 package-lock.json 복사
-COPY package*.json ./
+COPY . /app
 
-# 의존성 설치
-RUN npm install
-
-# 소스 파일 복사
-COPY tsconfig.json ./
-COPY src/ ./src/
-
-# TypeScript 컴파일
+RUN --mount=type=cache,target=/root/.npm-production npm ci --ignore-scripts --omit-dev
 RUN npm run build
 
-# 실행 단계를 위한 베이스 이미지
 FROM node:22-alpine AS release
 
-# 작업 디렉토리 설정
 WORKDIR /app
 
-# 빌드 단계에서 컴파일된 코드 복사
-COPY --from=builder /app/build/ ./build/
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
 
+ENV NODE_ENV=production
+RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --omit=dev
 
-# 애플리케이션 실행
-CMD ["node", "build/index.js"]
+ENTRYPOINT ["node", "dist/index.js"]
