@@ -1,0 +1,37 @@
+{
+  "name": "discord-mcp-server",
+  "version": "1.0.0",
+  "description": "디스코드 MCP 서버",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "weather",
+    "kma",
+    "mcp",
+    "llm"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "axios": "^1.9.0",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.3.1",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.48",
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "@types/moment": "^2.13.0",
+    "@types/moment-timezone": "^0.5.30",
+    "@types/node": "^20.8.4",
+    "tsx": "^4.1.2",
+    "typescript": "^5.2.2"
+  }
+}
