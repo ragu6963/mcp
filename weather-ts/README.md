@@ -41,15 +41,9 @@
      - `location` (문자열): 조회할 지역명 (예: 서울, 부산, 대구 등)
    - 반환값: 해당 지역의 현재 날씨 상태, 기온, 습도 등의 정보
 
-## 빌드 방법
+## 등록 방법
 
-Docker 빌드
-
-```bash
-docker build -t mcp/weather-ts -f Dockerfile .
-```
-
-## 설정 방법
+### 사전 준비 사항
 
 1. 날씨 API 키 발급
 
@@ -57,11 +51,15 @@ docker build -t mcp/weather-ts -f Dockerfile .
    - 회원가입 후 API 키를 신청합니다.
    - 발급받은 서비스 키를 안전하게 보관합니다.
 
+2. Docker 이미지 빌드
+
+```bash
+docker build -t mcp/weather-ts -f Dockerfile .
+```
+
 ### Claude Desktop에서 사용 방법
 
 `claude_desktop_config.json` 파일에 다음 내용을 추가하세요:
-
-#### docker 사용
 
 ```json
 {

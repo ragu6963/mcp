@@ -1,13 +1,13 @@
-# PDF-TS MCP 서버
+# resources-TS MCP 서버
 
-PDF 리소스 응답 MCP 서버
+리소스 응답 MCP 서버
 
 ## 빌드 방법
 
 Docker 빌드
 
 ```bash
-docker build -t mcp/pdf-ts -f Dockerfile .
+docker build -t mcp/resources-ts -f Dockerfile .
 ```
 
 ## 라이선스
