@@ -345,6 +345,21 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   }
 });
 
+// 종료 시그널 핸들러 추가
+process.on("SIGINT", gracefulShutdown);
+process.on("SIGTERM", gracefulShutdown);
+
+async function gracefulShutdown() {
+  console.error("종료 시그널 수신, 청소 작업 중...");
+  // Discord 클라이언트 정리
+  if (discordClient.isReady()) {
+    await discordClient.destroy();
+  }
+
+  console.error("서버 종료 중...");
+  process.exit(0);
+}
+
 // 서버 시작
 async function main() {
   const transport = new StdioServerTransport();
