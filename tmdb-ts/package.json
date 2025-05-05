@@ -1,0 +1,25 @@
+{
+  "name": "tmdb-mcp-server",
+  "version": "1.0.0",
+  "description": "TMDB API MCP 서버",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2",
+    "axios": "^1.6.7",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.4",
+    "tsx": "^4.1.2",
+    "typescript": "^5.2.2"
+  }
+}
