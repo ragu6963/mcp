@@ -70,20 +70,13 @@
 
 ### 사전 준비 사항
 
-1. TMDB API 키 발급
+1. TMDB API Read Access Token 발급
 
    - [TMDB 공식 사이트](https://www.themoviedb.org/)에 가입합니다.
-   - 계정 설정에서 API 항목으로 이동하여 API 키를 발급받습니다.
-   - 발급받은 API 키는 환경 변수 설정에 사용됩니다.
+   - 계정 설정에서 API 항목으로 이동하여 API Read Access Token 을 발급받습니다.
+   - 발급받은 API Read Access Token 는 환경 변수 설정에 사용됩니다.
 
-2. 프로젝트 설정
-
-   - 프로젝트 루트에 `.env` 파일을 생성하고 다음과 같이 API 키를 설정합니다:
-     ```
-     TMDB_API_KEY=발급받은_API_키_입력
-     ```
-
-3. Docker 이미지 빌드
+2. Docker 이미지 빌드
 
 ```bash
 docker build -t mcp/tmdb-ts -f Dockerfile .
@@ -98,9 +91,9 @@ docker build -t mcp/tmdb-ts -f Dockerfile .
   "mcpServers": {
     "tmdb": {
       "command": "docker",
-      "args": ["run", "-i", "--rm", "-e", "TMDB_API_KEY", "mcp/tmdb-ts"],
+      "args": ["run", "-i", "--rm", "-e", "TMDB_API_TOKEN", "mcp/tmdb-ts"],
       "env": {
-        "TMDB_API_KEY": "발급받은_API_키_입력"
+        "TMDB_API_TOKEN": "발급받은 TMDB API Read Access Token"
       }
     }
   }

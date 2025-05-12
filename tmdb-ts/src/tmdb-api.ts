@@ -2,11 +2,11 @@ import axios from "axios";
 
 // TMDB API 기본 URL
 const BASE_URL = "https://api.themoviedb.org/3";
-const API_KEY = process.env.TMDB_API_KEY;
+const API_TOKEN = process.env.TMDB_API_TOKEN;
 
-if (!API_KEY) {
+if (!API_TOKEN) {
   throw new Error(
-    "TMDB API 키가 설정되지 않았습니다. .env 파일에 TMDB_API_KEY를 설정해주세요."
+    "TMDB API 키가 설정되지 않았습니다. TMDB_API_TOKEN를 설정해주세요."
   );
 }
 
@@ -26,7 +26,7 @@ async function fetchFromTMDB(
     const response = await axios.get(`${BASE_URL}${endpoint}`, {
       headers: {
         accept: "application/json",
-        Authorization: `Bearer ${API_KEY}`,
+        Authorization: `Bearer ${API_TOKEN}`,
       },
       params: queryParams,
     });
